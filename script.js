@@ -21,7 +21,7 @@ function showData(LyricsResults){
 
     // First method with forEach
 
-    LyricsResults.data.forEach( song => {
+    /*LyricsResults.data.forEach( song => {
         output += `
             <li>
                 <span>
@@ -34,7 +34,22 @@ function showData(LyricsResults){
         result.innerHTML = `
         <ul class="songs">${output}</ul>
         `;
-    })
+    })*/
+
+    //Second Method with map()
+    result.innerHTML = `
+        <ul class="songs">
+            ${LyricsResults.data.map(song => `
+                <li>
+                    <span>
+                        <strong>${song.artist.name}</strong> - ${song.title}
+                    </span>
+                    <button class="btn" data-artist="$${song.artist.name}" data-song="${song.title}">Get Lyrics</button>
+                </li>
+            `).join()}
+        </ul>
+    `;
+
 }
 
 //  Form where user puts the serach term
