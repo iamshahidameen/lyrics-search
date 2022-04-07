@@ -14,10 +14,27 @@ async function searchSongs(term) {
     showData(data);
 }
 
-//  Show song and artist in DOM
+//  Show Song Name and Artist Name in DOM
 
-function showData(data){
-    console.log(data)
+function showData(LyricsResults){
+    let output = '';
+
+    // First method with forEach
+
+    LyricsResults.data.forEach( song => {
+        output += `
+            <li>
+                <span>
+                    <strong>${song.artist.name}</strong> - ${song.title}
+                </span>
+                <button class="btn" data-artist="$${song.artist.name}" data-song="${song.title}">Get Lyrics</button>
+            </li>
+        `;
+
+        result.innerHTML = `
+        <ul class="songs">${output}</ul>
+        `;
+    })
 }
 
 //  Form where user puts the serach term
